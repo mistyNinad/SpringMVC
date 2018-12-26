@@ -17,7 +17,10 @@ public class LoggerAspect {
 	
 	
 	@Before("execution (** com.journaldev.spring.model.Person.myAspectForPerson(..))")
-	public void myAspect2(){		
+	public void myAspect2(){	
+		
+		
+		
 		System.out.println(" ************ applying before advice.. 2 ************** ");
 		 
 	}
@@ -28,7 +31,7 @@ public class LoggerAspect {
 		
 		System.out.println(" ************ applying around advice.. of myAspectForPerson ************** ");
 		
-		pjp.proceed();
+		pjp.proceed(); //calling advised method
 		
 		System.out.println("after method execution");
 	

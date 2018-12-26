@@ -53,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		/*http.authorizeRequests().antMatchers("/").authenticated().anyRequest().authenticated()
 		.and().formLogin();*/
+		
 		http.authorizeRequests().antMatchers("/").authenticated()
 		.antMatchers("/persons").hasRole("ADMIN")
 		.and()
@@ -61,7 +62,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.httpBasic();
 		
-		//http.requiresChannel().antMatchers("/").requiresSecure();
+	
+		
+		http.requiresChannel().antMatchers("/").requiresSecure(); //https
 		
 		/*http.antMatcher("/")
     	.authorizeRequests()  

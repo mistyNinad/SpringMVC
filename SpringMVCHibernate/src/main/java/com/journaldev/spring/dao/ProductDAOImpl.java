@@ -24,20 +24,26 @@ public class ProductDAOImpl implements ProductDAO{
 	public List<Product> listProducts() throws JSONException {
 		System.out.println("in pd dao impl..");
 		
-		 Response response = RestAssured.get("http://localhost:8080/restws/rest/products");
+		 Response response = RestAssured.get("http://localhost:8080/restws/rest/products/1");
 			
 		String responseString = response.asString();
 		
 		System.out.println(responseString);
 		
+		JSONObject json = new JSONObject(responseString);
+		
+		System.out.println("json tostring "+json.toString());
+		json=new JSONObject(json.toString());
+		Product p =new Product(json.getInt("productId"),  json.getString("productName"), json.getInt("productPrice"),json.getString("productCategory"));
+		System.out.println("myproduct :"+p);
+		
 		JSONArray jsonArray = new JSONArray(responseString);
-		JSONObject json =null;
+		 json =null;
 		List<Product> productList = new ArrayList();
 		for(int i=0;i<jsonArray.length();i++){
 			 json = new JSONObject(jsonArray.get(i).toString());
 			 productList.add(new Product(json.getInt("productId"),  json.getString("productName"), json.getInt("productPrice"),json.getString("productCategory")));
 		}
-		
 		return null;
 		
 		

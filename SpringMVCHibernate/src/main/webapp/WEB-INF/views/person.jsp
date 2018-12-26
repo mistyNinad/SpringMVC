@@ -19,7 +19,7 @@
 
 <c:url var="addAction" value="/person/add" ></c:url>
 
-<form:form action="${addAction}" modelAttribute="person">
+<form:form action="${addAction}" modelAttribute="personContainer">
 <table>
 	<c:if test="${!empty person.name}">
 	<tr>

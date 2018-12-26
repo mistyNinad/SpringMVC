@@ -30,8 +30,21 @@ public class ProductController {
 	private ProductService productService;
 
 	@RequestMapping(value = "/products", method = RequestMethod.GET)
-	public ModelAndView listProducts(Model model) throws JSONException {
-		System.out.println("inside person...");
+	public ModelAndView listProducts(Model model ) throws JSONException {
+		System.out.println("inside products...");
+		
+		Response response = RestAssured.get("http://localhost:8080/restws/rest/products/1");
+		
+		String responseString = response.asString();
+		
+		System.out.println(responseString);
+		
+		JSONObject json = new JSONObject(responseString);
+		
+		Product p =new Product(json.getInt("productId"),  json.getString("productName"), json.getInt("productPrice"),json.getString("productCategory"));
+		System.out.println("product "+p);
+		
+		
 		model.addAttribute("product", new Product());
 		model.addAttribute("listProducts", this.productService.listProducts());
 

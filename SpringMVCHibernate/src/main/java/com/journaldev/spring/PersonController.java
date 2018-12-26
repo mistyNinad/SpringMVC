@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -57,7 +58,8 @@ public class PersonController {
 		p.myAspectForPerson();
 		
 		System.out.println("after calling ASPECT..");
-		model.addAttribute("person", new Person());
+		
+		model.addAttribute("personContainer", new Person());
 		model.addAttribute("listPersons", this.personService.listPersons());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject(this.personService.listPersons());
@@ -94,8 +96,9 @@ public class PersonController {
 
 	
 	//For add and update person both
+	@PostMapping
 	@RequestMapping(value= "/person/add", method = RequestMethod.POST)
-	public String addPerson(@ModelAttribute("person") Person p){
+	public String addPerson(@ModelAttribute("personContainer") Person p){
 		
 		System.out.println("inside add person...");
 		System.out.println("name......"+p.getName());

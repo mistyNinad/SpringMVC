@@ -1,11 +1,15 @@
 package com.journaldev.spring.model;
 
+import java.util.Comparator;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.context.annotation.Lazy;
 
 /**
  * Entity bean with JPA annotations
@@ -26,11 +30,12 @@ public class Person {
 	
 	private String username;
 	private String password;
-	
+	 
 	
 	
 	private String country;
 
+	
 	public Person(String string) {
 	this.name=string;
 	}
@@ -48,6 +53,7 @@ public class Person {
 	}
 
 	public void setId(int id) {
+		
 		this.id = id;
 	}
 
@@ -76,4 +82,5 @@ public class Person {
 	public String toString(){
 		return "id="+id+", name="+name+", country="+country;
 	}
+
 }

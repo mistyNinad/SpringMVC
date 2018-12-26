@@ -17,7 +17,7 @@ public class MyInterceptor extends HandlerInterceptorAdapter{
 	
 	
 	public boolean preHandle(HttpServletRequest req,HttpServletResponse res,Object Handler) {
-	
+
 		System.out.println("Inside the prehandle method. before executing handler method in controller.. ");
 		return true;
 		
@@ -28,6 +28,9 @@ public class MyInterceptor extends HandlerInterceptorAdapter{
 	{
 		System.out.println("Now Request is in Post handle method and View is yet to rendered");
 	}
+	
+	
+	
 	
 	public void afterCompletion(HttpServletRequest req,HttpServletRequest res,Object Handler, Exception ex) 
 	{

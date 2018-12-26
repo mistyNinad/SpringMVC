@@ -23,7 +23,7 @@ public class WebXmlConnfig implements WebApplicationInitializer {
     	
     	System.out.println("in webxxml config new  ");
       // Create the 'root' Spring application context
-     AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
+      AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
       rootContext.register(DispatcherConfig.class);
       // Manage the lifecycle of the root application context
       // container.addListener(new ContextLoaderListener(rootContext));
